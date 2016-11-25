@@ -45,7 +45,7 @@ particle_rh = function (id,pos, v, a) {
   };
   return particle;
 };
-var NUM_OF_PARTICELS = 3365;
+var NUM_OF_PARTICELS = 35;
 var center_x = window.innerWidth/2;
 var center_y = window.innerHeight/2;
 
@@ -68,10 +68,15 @@ window.onload = function() {
   update();
 
   var max =20000;
+ setInterval(function(){
+   _.each(particles,function(particle,key) {
+     particle.update();
+   })
+ },1)
+
+
   function update() {
-    if(max <0){
-      eeee
-    }
+
     max = max -1;
     ctx.clearRect(0, 0, width, height);
 
@@ -84,7 +89,7 @@ window.onload = function() {
       ctx.moveTo(width/2,height/2);
       ctx.lineTo(particle.d.pos[0],particle.d.pos[1]);
       ctx.stroke();
-      particle.update();
+
     })
 
     requestAnimationFrame(update);
